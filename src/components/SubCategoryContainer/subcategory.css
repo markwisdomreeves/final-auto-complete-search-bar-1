@@ -74,4 +74,8 @@
   .sub-category-title {
     font-size: 1.5rem;
   }
+  button.btn-hover:hover {
+    cursor: not-allowed;
+  }
+  
   
