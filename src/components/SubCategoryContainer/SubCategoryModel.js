@@ -62,7 +62,7 @@ class SubCategoryModel extends Component {
                 </div>
                 <div className="form-group" id="btn-container">
                     <button type="submit" 
-                      className="btn btn-outline-secondary m-20 btn-lg btn-inline"
+                      className="btn btn-outline-secondary m-20 btn-lg btn-inline btn-hover"
                       onClick={this.subSubmitData}
                       disabled={!isEnabled}
                       >
