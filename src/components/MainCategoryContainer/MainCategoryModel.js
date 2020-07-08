@@ -48,18 +48,19 @@ class MainCategoryModel extends Component {
         <form>
             <div className="autocomplete-wrapper">
                 <Autocomplete
+                  id="main-input-style"
                   value={this.state.val}
                   items={CategoriesData()}
                   getItemValue={item => item.name}
                   shouldItemRender={renderCategoriesName}
                   renderMenu={item => (
-                    <div className="dropdown">
+                    <div key={item.id} className="dropdown">
                         <Link to="/sub-categories-page">{item}</Link>
                     </div>    
                   )}
                   renderItem={(item, isHighlighted) => 
-                    <div className={`item ${isHighlighted ? 'selected-item' : ''}`}>
-                        <Link to="/sub-categories-page">{item.name}</Link>
+                    <div key={item.id} className={`item ${isHighlighted ? 'selected-item' : ''}`}>
+                        <span>{item.name}</span>
                     </div>
                   }
                   onChange={(event, val) => this.setState({

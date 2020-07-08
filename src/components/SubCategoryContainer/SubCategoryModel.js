@@ -8,7 +8,8 @@ import { CategoriesData, renderCategoriesName } from "../SubCategoryContainer/su
 
 class SubCategoryModel extends Component {
     state = {
-        val: ''
+        val: '',
+        
     };
 
     subSubmitData = (event) => {
@@ -25,7 +26,9 @@ class SubCategoryModel extends Component {
     }
 
     canBeSubmitted() {
-        const { val } = this.state;
+        const { 
+            val
+        } = this.state;
         return val.length > 0 && val.length > 3;
     }
     
@@ -37,19 +40,20 @@ class SubCategoryModel extends Component {
             <form onSubmit={this.subSubmitData}>
                 <div className="sub-category-autocomplete-wrapper">
                 <SubCategoryTitle />
-                   <Autocomplete 
+                   <Autocomplete
+                    id="sub-input-category" 
                     value={this.state.val}
                     items={CategoriesData()}
                     getItemValue={item=> item.name}
                     shouldItemRender={renderCategoriesName}
                     renderMenu={item => (
-                        <div className="sub-category-dropdown">
+                        <div key={item.id} className="sub-category-dropdown">
                            <Link to="/sub-categories-page">{item}</Link>
                         </div>    
                     )}
                     renderItem={(item, isHighlighted) => 
-                        <div className={`sub-category-item ${isHighlighted ? 'sub-selected-item' : ''}`}>
-                            <Link to="/sub-categories-page">{item.name}</Link>
+                        <div key={item.id} className={`sub-category-item ${isHighlighted ? 'sub-selected-item' : ''}`}>
+                            <span>{item.name}</span>
                         </div>
                     }
                     onChange={(event, val) => this.setState({
@@ -62,7 +66,7 @@ class SubCategoryModel extends Component {
                 </div>
                 <div className="form-group" id="btn-container">
                     <button type="submit" 
-                      className="btn btn-outline-secondary m-20 btn-lg btn-inline"
+                      className="btn btn-outline-secondary m-20 btn-lg btn-inline btn-hover"
                       onClick={this.subSubmitData}
                       disabled={!isEnabled}
                       >
